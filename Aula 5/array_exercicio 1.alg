@@ -19,7 +19,7 @@ inicio
         escrever "Informe a quantidade de filhos do funcionário :"
         ler numfilhos [cont]
         se ( numfilhos [cont] > 0 ) entao
-            salariofim [cont] <- salario [cont] + ((salario [cont] * 0.10) * numfilhos [cont])
+            salariofim [cont] <- salario [cont] + ((salario [cont] * 0.10) * numfilhos [cont]) //calculo do salário
         senao
             salariofim [cont] <- salario [cont]
         fimse
