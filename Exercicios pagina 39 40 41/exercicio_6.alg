@@ -1,8 +1,10 @@
 inicio
     variavel inteiro idade
-    escrever "Informe a idade"
+    escrever "Informe a idade :"
     ler idade
-    escolhe idade < 18
+    escolhe idade
+        caso 1,2,3,4:
+            escrever "Inválido"
         caso 5, 6, 7:
             escrever "Infantil A"
         caso 8, 9, 10, 11:
