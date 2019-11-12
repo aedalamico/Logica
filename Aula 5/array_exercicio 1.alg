@@ -26,7 +26,7 @@ inicio
     proximo
     para cont de 0 ate 2 passo 1
         se ( numfilhos [cont] > 0 ) entao
-           escrever "\nFuncionário ", nome [cont], ", possui ", numfilhos [cont], " filhos", " e seu salário seáa ", salariofim [cont]
+           escrever "\nFuncionário ", nome [cont], ", possui ", numfilhos [cont], " filhos", " e seu salário será ", salariofim [cont]
         senao
             escrever "\nFuncionário ", nome [cont], ", não possui filhos e seu Salário será ", salariofim [cont]
         fimse
