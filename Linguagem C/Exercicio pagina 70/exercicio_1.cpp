@@ -15,7 +15,7 @@ int main(){
 		c5='h', 
 		c6='a';
 	
-	printf("%d, %d, %d, %d, %d, %d \n",num1,num2,num3,num4,num5,num6);
-	printf("O animal contido nas variaveis caracteres e a %c%c%c%c%c%c", c1,c2,c3,c4,c5,c6);
+	printf("As variaveis inteiras contem os numeros: %d, %d, %d, %d, %d, %d. \n",num1,num2,num3,num4,num5,num6);
+	printf("O animal contido nas variaveis caracteres e a %c%c%c%c%c%c.", c1,c2,c3,c4,c5,c6);
 	
 }
