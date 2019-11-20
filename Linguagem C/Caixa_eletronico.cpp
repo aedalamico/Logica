@@ -80,6 +80,7 @@ void deposito(){
 	
 	printf("Deposito\n");
 	printf("--------------------------------------\n");
+	/*SOLICITAÇÃO DOS DADOS DE DEPOSITO*/
 	printf("Informe o CPF: \n");
 	gets(cpf);
 	
@@ -97,9 +98,11 @@ void deposito(){
 	scanf("%f",&valor);
 	
 	system("cls");
+	
 	printf("Deposito\n");
 	printf("--------------------------------------\n");
 	printf("--------------------------------------\n");
+	/*MOSTRA OS DADOS DO DEPOSITO*/
 	printf("Viasualize os dados de deposito \n");
 	printf("CPF: %s\n",cpf);
 	printf("Agencia: %s\n",agencia);
