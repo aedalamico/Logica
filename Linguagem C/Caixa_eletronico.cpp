@@ -66,34 +66,40 @@ void deposito(){
 	
 	system("cls"); /*clear - Limpar a tela*/
 	printf("Deposito\n");
-	printf("--------------------------------------\n");
-	printf("Informe o valor a ser depositado: \n");
-	scanf("%f",&valor);
-	printf("--------------------------------------\n");
-	printf("Infome a conta para deposito: \n");
-	gets(conta);
-	printf("--------------------------------------\n");
-	printf("Informe a agencia para deposito: \n");
-	gets(agencia);
+	fflush(stdin);
 	printf("--------------------------------------\n");
 	printf("Informe o CPF: \n");
 	gets(cpf);
+	
+	printf("--------------------------------------\n");
+	printf("Informe a agencia para deposito: \n");
+	gets(agencia);
+		
+	printf("--------------------------------------\n");
+	printf("Infome a conta para deposito: \n");
+	gets(conta);
+	
+	
+	printf("--------------------------------------\n");	
+	printf("Informe o valor a ser depositado: \n");
+	scanf("%f",&valor);
 	
 	system("cls");
 	printf("Deposito\n");
 	printf("--------------------------------------\n");
 	printf("--------------------------------------\n");
 	printf("Viasualize os dados de deposito \n");
-	printf("CPF: %s"\n,cpf);
+	printf("CPF: %s\n",cpf);
 	printf("Agencia: %s\n",agencia);
 	printf("Conta %s\n",conta);
 	printf("Valor %f\n",valor);
 	printf("--------------------------------------\n");
 	
 	do{
-		printf("Confirma a operacao ? ( Y - Sim / N - Não)");
-		scanf("%c"&confirma);
-	} while (confirma != 'y' or confirma != 'n')
+		printf("Confirma a operacao ? ( Y - Sim / N - Nao)");
+		scanf("%c",&confirma);
+		
+	} while (confirma != 'y' and confirma != 'Y' and confirma != 'n' and confirma != 'N' );
 	
 	
 	
