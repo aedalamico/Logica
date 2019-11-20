@@ -58,7 +58,24 @@ int menu(){
 }
 
 void deposito(){
+	float valor = 0.00;
+	char conta[12];
+	char agencia[6];
+	char cpf[11];
+	
+	system("cls"); /*clear - Limpar a tela*/
 	printf("Deposito\n");
+	printf("--------------------------------------\n");
+	printf("Informe o valor a ser depositado: \n");
+	scanf("%f",&valor);
+	printf("--------------------------------------\n");
+	printf("Infome a conta para deposito: \n");
+	gets(conta);
+	printf("--------------------------------------\n");
+	printf("Informe a agencia para deposito: \n");
+	gets(agencia);
+	
+	
 	
 }
 void extrato(){
