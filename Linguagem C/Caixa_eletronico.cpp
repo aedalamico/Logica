@@ -1,6 +1,7 @@
 /*ADICIONA AS BIBLIOTECAS*/
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.sh> /*BLIBLIOTECA PARA MANIPULAR STRING*/
 
 /*ADICIONA PROTOTIPOS DAS FUNÇÕES*/
 int menu();
@@ -10,6 +11,7 @@ void transferencia();
 void saque();
 void sair();
 void registrar(int modo);
+bool registrar_deposito(char cpf[11], char agencia[6],char conta[12],float valor);
 
 int main(){
 	int opcao; /*variavel local*/
@@ -123,9 +125,14 @@ void deposito(){
 	system("cls"); /*clear - Limpar a tela*/
 	printf("Deposito\n");
 	printf("--------------------------------------\n");
-	printf("--------------------------------------\n");	
+	/*float valor = 0.00;
+	char conta[12];
+	char agencia[6];
+	char cpf[11]*/
+	registrar_deposito(cpf, agencia, conta, valor);
 	
 	printf("Deposito realizado com suscesso !\n");
+	printf("--------------------------------------\n");	
 	system ("pause");
 	
 }
@@ -153,5 +160,35 @@ void registrar(int modo){
 	/*VERIFICA SE O ARQUIVO EH ACESSIVEL*/
 	if (!fp){
 		printf("Erro na abertura do arquivo.");
+	}{
+		switch(modo){
+			case 1:{
+				/*RETORNO O ARQUIVO PARA MANIPULAÇÃO*/
+				break;
+			}
+			case 2:{
+				/*SALVA O CONTEUDO NO ARQUIVO*/
+				break;
+			}
+			default:{
+				printf("Erro ao identificar o acao do arquivo")
+				break;
+			}
+		}
+		fclose(p)
 	}
+}
+bool registrar_deposito(char cpf[11], char agencia[6],char conta[12],float valor){
+	FILE *fp;
+	/*ABRIR O ARQUIVO*/
+	fp=fopen ("caixa_eletronico.data","wb");
+	
+	/*VERIFICA SE O ARQUIVO EH ACESSIVEL*/
+	if (!fp){
+		printf("Erro na abertura do arquivo.");
+	}{
+		"cpf, agencia, conta, valor"
+	
+	}
+	
 }
