@@ -9,6 +9,7 @@ void extrato();
 void transferencia();
 void saque();
 void sair();
+void registrar(int modo);
 
 int main(){
 	int opcao; /*variavel local*/
@@ -53,9 +54,11 @@ int main(){
 	system("pause");
 }
 
+/*DECLARAÇÃO DE FUNÇÕES*/
+
 int menu(){
 	int opcao;	
-	printf("CAIXA ELETRONICO\n\n");
+	printf("CAIXA ELETRONICO\n\n");                   
 	printf("Escolha um serviço\n");
 	printf("1. Deposito\n");
 	printf("2. Extrato\n");
@@ -140,4 +143,15 @@ void saque(){
 void sair(){
 	printf("Sair");
 	
+}
+
+void registrar(int modo){
+	FILE *fp;
+	/*ABRIR O ARQUIVO*/
+	fp=fopen ("caixa_eletronico.data","wb");
+	
+	/*VERIFICA SE O ARQUIVO EH ACESSIVEL*/
+	if (!fp){
+		printf("Erro na abertura do arquivo.");
+	}
 }
