@@ -73,6 +73,6 @@ void saque(){
 	
 }
 void sair(){
-	system("exit");
+	printf("Sair");
 	
 }
