@@ -62,6 +62,7 @@ void deposito(){
 	char conta[12];
 	char agencia[6];
 	char cpf[11];
+	char confirma;
 	
 	system("cls"); /*clear - Limpar a tela*/
 	printf("Deposito\n");
@@ -74,6 +75,26 @@ void deposito(){
 	printf("--------------------------------------\n");
 	printf("Informe a agencia para deposito: \n");
 	gets(agencia);
+	printf("--------------------------------------\n");
+	printf("Informe o CPF: \n");
+	gets(cpf);
+	
+	system("cls");
+	printf("Deposito\n");
+	printf("--------------------------------------\n");
+	printf("--------------------------------------\n");
+	printf("Viasualize os dados de deposito \n");
+	printf("CPF: %s"\n,cpf);
+	printf("Agencia: %s\n",agencia);
+	printf("Conta %s\n",conta);
+	printf("Valor %f\n",valor);
+	printf("--------------------------------------\n");
+	
+	do{
+		printf("Confirma a operacao ? ( Y - Sim / N - Não)");
+		scanf("%c"&confirma);
+	} while (confirma != 'y' or confirma != 'n')
+	
 	
 	
 	
