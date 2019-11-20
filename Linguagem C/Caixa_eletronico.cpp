@@ -1,8 +1,8 @@
+/*ADICIONA AS BIBLIOTECAS*/
 #include <stdio.h>
 #include <stdlib.h>
 
-int servico; /*Variavel Global*/
-
+/*ADICIONA PROTOTIPOS DAS FUNÇÕES*/
 int menu();
 void deposito();
 void extrato();
@@ -12,34 +12,44 @@ void sair();
 
 int main(){
 	int opcao; /*variavel local*/
-	opcao =	menu();
+	int confirma;
 	
-	switch(opcao){
-		case 1:{
-			deposito();
-			break;
+	do{
+		system("cls");
+		opcao =	menu();
+		
+		switch(opcao){
+			case 1:{
+				deposito();
+				break;
+			}
+			case 2:{
+				extrato();
+				break;
+			}
+			case 3:{
+				transferencia();
+				break;
+			}
+			case 4:{
+				saque();
+				break;
+			} 
+			case 5:{
+				sair();
+				break;
+			}
+			default:{
+				printf("opcao invalida");
+				break;
+			}
 		}
-		case 2:{
-			extrato();
-			break;
-		}
-		case 3:{
-			transferencia();
-			break;
-		}
-		case 4:{
-			saque();
-			break;
-		} 
-		case 5:{
-			sair();
-			break;
-		}
-		default:{
-			printf("opcao invalida");
-			break;
-		}
-	}
+		system("pause");
+		printf("Deseja realizar uma nova acao ( Y - Sim / N - Nao)");
+		fflush(stdin);
+		scanf("%c",&confirma);
+	} while (confirma != 'y' or confirma != 'Y');
+	printf("Caixa Eletronico Encerrado");
 	system("pause");
 }
 
@@ -58,15 +68,17 @@ int menu(){
 }
 
 void deposito(){
+	/*DECLARAÇÃO DAS VARIAVEIS DA FUNÇÃO*/
 	float valor = 0.00;
 	char conta[12];
 	char agencia[6];
 	char cpf[11];
 	char confirma;
 	
+	fflush(stdin); /*realiza a limpeza do buffer*/
 	system("cls"); /*clear - Limpar a tela*/
+	
 	printf("Deposito\n");
-	fflush(stdin);
 	printf("--------------------------------------\n");
 	printf("Informe o CPF: \n");
 	gets(cpf);
@@ -97,12 +109,18 @@ void deposito(){
 	
 	do{
 		printf("Confirma a operacao ? ( Y - Sim / N - Nao)");
+		fflush(stdin);
 		scanf("%c",&confirma);
 		
 	} while (confirma != 'y' and confirma != 'Y' and confirma != 'n' and confirma != 'N' );
 	
+	system("cls"); /*clear - Limpar a tela*/
+	printf("Deposito\n");
+	printf("--------------------------------------\n");
+	printf("--------------------------------------\n");	
 	
-	
+	printf("Deposito realizado com suscesso !\n");
+	system ("pause");
 	
 }
 void extrato(){
