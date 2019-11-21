@@ -1,7 +1,7 @@
 /*ADICIONA AS BIBLIOTECAS*/
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.sh> /*BLIBLIOTECA PARA MANIPULAR STRING*/
+#include <string.h> /*BLIBLIOTECA PARA MANIPULAR STRING*/
 
 /*ADICIONA PROTOTIPOS DAS FUNÇÕES*/
 int menu();
@@ -125,10 +125,7 @@ void deposito(){
 	system("cls"); /*clear - Limpar a tela*/
 	printf("Deposito\n");
 	printf("--------------------------------------\n");
-	/*float valor = 0.00;
-	char conta[12];
-	char agencia[6];
-	char cpf[11]*/
+
 	registrar_deposito(cpf, agencia, conta, valor);
 	
 	printf("Deposito realizado com suscesso !\n");
@@ -171,14 +168,15 @@ void registrar(int modo){
 				break;
 			}
 			default:{
-				printf("Erro ao identificar o acao do arquivo")
+				printf("Erro ao identificar o acao do arquivo");
 				break;
 			}
 		}
-		fclose(p)
+		fclose(fp);
 	}
 }
 bool registrar_deposito(char cpf[11], char agencia[6],char conta[12],float valor){
+	char valor1[10];
 	FILE *fp;
 	/*ABRIR O ARQUIVO*/
 	fp=fopen ("caixa_eletronico.data","wb");
@@ -187,7 +185,24 @@ bool registrar_deposito(char cpf[11], char agencia[6],char conta[12],float valor
 	if (!fp){
 		printf("Erro na abertura do arquivo.");
 	}{
-		"cpf, agencia, conta, valor"
+		char registro[1024];
+		strcat(registro, cpf);
+		strcat(registro, ";");
+		strcat(registro, agencia);
+		strcat(registro, ";");
+		strcat(registro, conta);
+		strcat(registro, ";");
+		sprintf(valor1, "%2.f",valor);
+		strcat(registro, valor1);
+		strcat(registro, ";");
+	
+		printf(registro);
+		for (int i=0; registro[i]; i++)
+		{
+			printf("%s",registro[i]):
+				putc(registro[i],fp);
+			
+		}
 	
 	}
 	
