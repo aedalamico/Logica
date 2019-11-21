@@ -179,7 +179,7 @@ bool registrar_deposito(char cpf[11], char agencia[6],char conta[12],float valor
 	char valor1[10];
 	FILE *fp;
 	/*ABRIR O ARQUIVO*/
-	fp=fopen ("caixa_eletronico.data","wb");
+	fp=fopen ("caixa_eletronico.txt","wb");
 	
 	/*VERIFICA SE O ARQUIVO EH ACESSIVEL*/
 	if (!fp){
@@ -197,10 +197,10 @@ bool registrar_deposito(char cpf[11], char agencia[6],char conta[12],float valor
 		strcat(registro, ";");
 	
 		printf(registro);
-		for (int i=0; registro[i]; i++)
+		for (int i=0; registro[i]; i++);
 		{
-			printf("%s",registro[i]):
-				putc(registro[i],fp);
+		//	printf("%s",registro[i]):
+		//		putc(registro[i],fp);
 			
 		}
 	
