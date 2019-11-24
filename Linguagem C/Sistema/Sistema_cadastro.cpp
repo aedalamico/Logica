@@ -18,6 +18,8 @@ int main(){
 		switch(opcao){
 			case 1:{
 				tela_cadastro();
+				fflush(stdin);
+				confirma='y';
 				break;
 			}
 			case 2:{
@@ -33,19 +35,23 @@ int main(){
 				break;
 			}
 			case 6:{
+				fflush(stdin);
+				confirma='n';
 				break;
 			}
 			default:{
 				break;
 				printf("Opcao invalida !!!");
+				fflush(stdin);
+				confirma='n';
 			}
 		}
 		system("pause");
-		printf("Deseja realizar uma nova acao?\n ('Y' - SIM / 'N' - NAO)");
+	//	printf("Deseja realizar uma nova acao?\n ('Y' - SIM / 'N' - NAO)");
 		fflush(stdin);
-		scanf("%c",&confirma);
+		//Sscanf("%c",&confirma);
 		
-	}while (confirma != 'y' or confirma != 'Y');
+	}while (confirma == 'y' or confirma == 'Y');
 	system("pause");
 	
 	
@@ -105,10 +111,26 @@ void tela_cadastro(){
 				break;
 			}
 		}
-	}while (confirma != 'n' and confirma != 'N');
+	}while (confirma == 'n' or confirma == 'N');
 }
 
 void cadastro_aluno(){
+	char nome[30], 
+	idade[2],
+	codigo_turma[5],
+	data_nascimento[10];
+	fflush(stdin);
+	system("cls");
+	printf("===========================================\n");
+	printf("Cadastro de alunos\n\n");
+	printf("Nome do Aluno :\n");
+	gets(nome);
+	printf("Idade :\n");
+	scanf("%s", &idade);
+	printf("Informe o código da turma:\n");
+	scanf("%s",&codigo_turma);
+	system("pause")	;
+	system("cls");
 	
 }
 
