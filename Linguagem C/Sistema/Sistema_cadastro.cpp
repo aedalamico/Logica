@@ -118,7 +118,6 @@ void cadastro_aluno(){
 	char nome[30], 
 	idade[2],
 	codigo_turma[5],
-	data_nascimento[10],
 	confirma;
 	do{
 		fflush(stdin);
@@ -152,8 +151,37 @@ void cadastro_turma(){
 	codigo_turma[5],
 	nome_prof[30],
 	data_inicio[10],
-	confirma;
+	confirma,confirma_aluno;
 	int numero_alunos;
+	do{
+		fflush(stdin);
+		system("cls");
+		printf("===========================================\n");
+		printf("Cadastro de turmas\n");
+		printf("Informe a disciplina:\n");
+		gets(nome_disciplina);
+		printf("Informe o codigo da turma:\n");
+		scanf("%s",&codigo_turma);
+		printf("Informe o numero de alunos:\n");
+		scanf("%d",&numero_alunos);
+		fflush(stdin);
+		printf("Informe o nome do professo:\n");
+		gets(nome_prof);
+		printf("Informe a data de inicio: (DD/MM/AAAA):\n");
+		gets(data_inicio);
+		printf("Deseja cadastrar alunos para esta turma? ('Y' - SIM / 'N' - NAO)\n ");
+		scanf("%c", &confirma_aluno);
+		if (confirma_aluno == 'Y'or confirma_aluno == 'y'){
+			cadastro_aluno();
+			printf("Cadastro realizado com sucesso!!!");
+		}else{
+			printf("Deseja cadastrar outra turma? ('Y' - SIM / 'N' - NAO)\n");
+			scanf("%c", &confirma);
+			printf("Cadastro realizado com sucesso!!!");
+		}
+		
+	}while (confirma == 'y' or confirma == 'Y');
+	system("pause");
 	
 	
 	
