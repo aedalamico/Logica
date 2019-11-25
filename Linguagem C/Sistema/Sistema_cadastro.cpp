@@ -134,11 +134,11 @@ void cadastro_aluno(){
 		printf("Cadastro realizado com sucesso\n");
 		system("pause");
 		system("cls");
-		printf("Deseja realizar outro cadastro? \n");
+		printf("Deseja realizar outro cadastro de aluno? \n");
 		fflush(stdin);
 		scanf("%c", &confirma);
 		if (confirma == 'n' or confirma == 'N'){
-			printf("Você optou por sair!\n");
+			printf("Você optou por sair do cadastro de alunos!\n");
 		}
 		
 	}while (confirma == 'y' or confirma == 'Y');
@@ -177,6 +177,9 @@ void cadastro_turma(){
 		if (confirma_aluno == 'Y'or confirma_aluno == 'y'){
 			cadastro_aluno();
 			printf("Cadastro de alunos realizado com sucesso!!!");
+			system("cls");
+			printf("Deseja cadastrar outra turma? ('Y' - SIM / 'N' - NAO)\n");
+			scanf("%c", &confirma);
 		}else{
 			printf("Deseja cadastrar outra turma? ('Y' - SIM / 'N' - NAO)\n");
 			scanf("%c", &confirma);
