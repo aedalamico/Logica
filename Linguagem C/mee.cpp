@@ -1,8 +1,11 @@
 //ADICIONAR BIBLIOTECAS
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> //para manipular sistema operacional
 #include <string.h> //manipular strings
-#include <windows.h>
+#include <windows.h> //especifica para manipular o sistema windows
+#include <locale.h> //Manipular a aos caracteres especiais
+
+//ADICIONAR VARIAVEIS LOCAIS
 
 
 //ADICIONAR OS PROTOTIPOS DE FUNCAO
@@ -159,6 +162,10 @@ void transferencia(){
 }
 
 void saque(){
+	//VARIAVEIS LOCAIS
+	int saque;
+    int resto50,resto20,resto10,resto5;
+    int nota50,nota20,nota10,nota5;
 	system("cls"); //clear - LINUX
 
 	printf("------------------------------------------------- \n");
@@ -166,9 +173,7 @@ void saque(){
 	printf("------------------------------------------------- \n");
 	
 	
-    int saque;
-    int resto50,resto20,resto10,resto5;
-    int nota50,nota20,nota10,nota5;
+
 
     do {
         printf("\nDigite o valor a ser sacado: \n >");
@@ -198,6 +203,9 @@ void saque(){
             resto10 = resto20 % 10;
             nota5 = resto10 / 5;
             resto5 = resto10 % 5;
+            
+            
+            printf("\a \a \a \a");
         }
         else{
         	system("cls"); //clear - LINUX
