@@ -205,7 +205,6 @@ void saque(){
             resto5 = resto10 % 5;
             
             
-            printf("\a \a \a \a");
         }
         else{
         	system("cls"); //clear - LINUX
