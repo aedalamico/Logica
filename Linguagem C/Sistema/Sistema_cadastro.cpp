@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 
 int menu_principal(); 
 void tela_cadastro();
 void cadastro_aluno();
 void cadastro_turma();
+void tela_editar();
+void editar_aluno();
+void editar_turma();
 
 int main(){
 	int opcao;
@@ -23,6 +27,9 @@ int main(){
 				break;
 			}
 			case 2:{
+				tela_editar();
+				fflush(stdin);
+				confirma='y';
 				break;
 			}
 			case 3:{
@@ -63,8 +70,8 @@ int menu_principal(){
 	printf("Sistema de cadastro de turmas e alunos\n\n");
 	printf("Escolha uma opcao\n");
 	printf("1 - Cadastro\n");
-	printf("2 - Visualizar\n");
-	printf("3 - Editar\n");
+	printf("2 - Editar\n");
+	printf("3 - Visualizar\n");
 	printf("4 - Excluir\n");
 	printf("5 - Pesquisar\n");
 	printf("6 - Sair\n");
@@ -190,6 +197,54 @@ void cadastro_turma(){
 	system("pause");
 	
 	
+	
+}
+void tela_editar(){
+	int opcao;
+	char confirma;
+	do{
+		fflush(stdin);
+		system("cls");
+		printf("===========================================\n");
+		printf("Edição de aluno ou turma\n");
+		printf("Escolha o que deseja editar\n");
+		printf("1 - Editar turma\n");
+		printf("2 - Editar aluno\n");
+		printf("3 - Retornar ao meu principal\n");
+		fflush(stdin);
+		scanf("%d",&opcao);
+		switch(opcao){
+			case 1:{
+				editar_turma();
+				break;
+			}
+			case 2:{
+				editar_aluno();
+				break;
+			}
+			case 3:{
+				system("cls");
+				printf("Realmente deseja sair? ('Y' - SIM / 'N' - NAO) ");
+				fflush(stdin);
+				scanf("%c", &confirma);
+				system("pause");
+				break;
+			}
+			default:{
+				system("cls");
+				printf("Opçao ivalida\n\n");
+				confirma='n';
+				system("pause");
+				break;
+			}
+		}
+	}while (confirma == 'n' or confirma == 'N');
+	
+}
+void editar_aluno(){
+	
+}
+void editar_turma(){
 	
 }
 
