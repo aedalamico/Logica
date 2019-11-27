@@ -11,7 +11,7 @@ void tela_editar();
 void editar_aluno();
 void editar_turma();
 
-int main(){
+int main(){ /* Função Principal*/
 	int opcao;
 	char confirma;
 	
@@ -64,7 +64,7 @@ int main(){
 	
 }
 
-int menu_principal(){ 
+int menu_principal(){ /*FUNÇÃO MENU PRINCIPAL*/
 	int opcao;
 	printf("===========================================\n");
 	printf("Sistema de cadastro de turmas e alunos\n\n");
@@ -79,7 +79,7 @@ int menu_principal(){
 	return(opcao);
 }
 
-void tela_cadastro(){
+void tela_cadastro(){ /*FUNÇÃO  TELA DE CADASTRO DE TURMA E ALUNO*/
 	int opcao;
 	char confirma;
 	do{
@@ -121,7 +121,7 @@ void tela_cadastro(){
 	}while (confirma == 'n' or confirma == 'N');
 }
 
-void cadastro_aluno(){
+void cadastro_aluno(){ /*TELA DE CADASTRO DE ALUNO*/
 	char nome[30], 
 	idade[2],
 	codigo_turma[5],
@@ -155,7 +155,7 @@ void cadastro_aluno(){
 	
 }
 
-void cadastro_turma(){
+void cadastro_turma(){ /*TELA DE CADASTRO DE TURMA*/
 	char nome_disciplina[20],
 	codigo_turma[5],
 	nome_prof[30],
@@ -199,7 +199,7 @@ void cadastro_turma(){
 	
 	
 }
-void tela_editar(){
+void tela_editar(){ /*TELA EDITAR*/
 	int opcao;
 	char confirma;
 	do{
@@ -241,10 +241,10 @@ void tela_editar(){
 	}while (confirma == 'n' or confirma == 'N');
 	
 }
-void editar_aluno(){
+void editar_aluno(){ /*TELA EDITAR ALUNO*/
 	
 }
-void editar_turma(){
+void editar_turma(){ /*TELA EDITAR TURMA*/
 	
 }
 
