@@ -12,7 +12,7 @@ struct tCad_turma {
 };
 
 struct tCad_aluno{
-	char nome_aluno[30];
+	char nome_aluno[30],telefone_aluno[13];
 	int idade, codigo_turma;
 	
 };
@@ -97,7 +97,7 @@ int menu_principal(){ /*FUNÇÃO MENU PRINCIPAL*/
 	printf("Escolha uma opcao\n");
 	printf("1 - Cadastro\n");
 	printf("2 - Editar\n");
-	printf("3 - Visualizar\n");
+	printf("3 - Consultar\n");
 	printf("4 - Excluir\n");
 	printf("5 - Pesquisar\n");
 	printf("6 - Sair\n");
@@ -250,6 +250,10 @@ void cadastro_aluno(){ /*TELA DE CADASTRO DE ALUNO*/
 		fflush(stdin);
 		scanf("%s", &aluno.idade);
 		
+		printf("Telefone: \n");
+		fflush(stdin);
+		scanf("%s", &aluno.telefone_aluno);
+		
 		fwrite (&aluno, sizeof(aluno), 1, arq);
 		
 		fclose(arq);
@@ -397,7 +401,7 @@ void consulta_turma(){
 			FILE *arq = fopen("aluno.pro","rb");
 			while (fread(&aluno, sizeof(aluno), 1, arq)){
 				if (cd_turma == aluno.codigo_turma){
-					printf("Aluno : %s | Idade : %d  anos\n", aluno.nome_aluno, aluno.idade);
+					printf("Aluno : %s | Idade : %d  anos\n | Telefone : %s \n", aluno.nome_aluno, aluno.idade);
 				}
 			}
 			fclose(arq);
