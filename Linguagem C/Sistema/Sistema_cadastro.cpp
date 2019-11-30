@@ -28,7 +28,7 @@ void editar_turma(); /*TELA EDITAR TURMA*/
 void editar_aluno(); /*TELA EDITAR ALUNO*/
 void tela_consulta(); /*TELA DE CONSULTA*/
 void consulta_turma(); /*TELA DE CONSULTA TURMA*/
-void listar_turma();
+void visualisar_turma();
 
 void sair(); /*TELA SAIR*/
 
@@ -59,9 +59,11 @@ int main(){ /* Função Principal*/
 				break;
 			}
 			case 4:{
+				
 				break;
 			}
 			case 5:{
+				consulta_turma();
 				break;
 			}
 			case 6:{
@@ -352,7 +354,7 @@ void tela_consulta(){
 				break;
 			}
 			case 2:{
-				listar_turma();
+				visualisar_turma();
 				
 				break;
 			}
@@ -401,7 +403,7 @@ void consulta_turma(){
 			FILE *arq = fopen("aluno.pro","rb");
 			while (fread(&aluno, sizeof(aluno), 1, arq)){
 				if (cd_turma == aluno.codigo_turma){
-					printf("Aluno : %s | Idade : %d  anos\n | Telefone : %s \n", aluno.nome_aluno, aluno.idade);
+					printf("Aluno : %s | Idade : %d  anos | Telefone : %s \n", aluno.nome_aluno, aluno.idade, aluno.telefone_aluno);
 				}
 			}
 			fclose(arq);
@@ -412,7 +414,7 @@ void consulta_turma(){
 	
 }
 
-void listar_turma(){
+void visualisar_turma(){
 	
 	struct tCad_turma turma;
 	
