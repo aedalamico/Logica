@@ -28,6 +28,7 @@ void editar_turma(); /*TELA EDITAR TURMA*/
 void editar_aluno(); /*TELA EDITAR ALUNO*/
 void tela_consulta(); /*TELA DE CONSULTA*/
 void consulta_turma(); /*TELA DE CONSULTA TURMA*/
+void listar_turma();
 
 void sair(); /*TELA SAIR*/
 
@@ -114,24 +115,26 @@ void tela_cadastro(){ /*FUNÇÃO  TELA DE CADASTRO DE TURMA E ALUNO*/
 		printf("Cadastro de alunos e turmas\n");
 		printf("Escolha o que deseja cadastrar\n");
 		printf("1 - Cadastro de turmas\n");
-		printf("2 - Cadastro de alunos\n");
-		printf("3 - Retornar ao meu principal\n");
+		
+		printf("2 - Retornar ao meu principal\n");
 		fflush(stdin);
 		scanf("%d",&opcao);
+		
 		switch(opcao){
 			case 1:{
 				cadastro_turma();
 				break;
 			}
 			case 2:{
-				cadastro_aluno();
-				break;
-			}
-			case 3:{
 				system("cls");
 				printf("Realmente deseja sair? ('Y' - SIM / 'N' - NAO) ");
 				fflush(stdin);
 				scanf("%c", &confirma);
+				if ( confirma == 'Y'or confirma == 'y'){
+					confirma == 'N';
+				}else {
+					confirma == 'Y';
+				}
 				system("pause");
 				break;
 			}
@@ -139,11 +142,16 @@ void tela_cadastro(){ /*FUNÇÃO  TELA DE CADASTRO DE TURMA E ALUNO*/
 				system("cls");
 				printf("Opçao ivalida\n\n");
 				confirma='n';
-				system("pause");
 				break;
 			}
 		}
-	}while (confirma == 'n' or confirma == 'N');
+		if (opcao != 3){
+			printf("Deseja realizar outro cadastro? ('Y' - SIM / 'N' - NAO) ");
+			fflush(stdin);
+			scanf("%c", &confirma);
+		}
+		
+	}while (confirma == 'y' or confirma == 'Y');
 	system("cls");
 	printf("Saindo do cadastro\n\n");
 	system("pause");
@@ -328,7 +336,7 @@ void tela_consulta(){
 		printf("Consulta de alunos e turmas\n");
 		printf("Escolha o que deseja consultar\n");
 		printf("1 - Consultar turma\n");
-		printf("2 - Consultar aluno\n");
+		printf("2 - Listar turmas\n");
 		printf("3 - Retornar ao meu principal\n");
 		
 		fflush(stdin);
@@ -340,6 +348,7 @@ void tela_consulta(){
 				break;
 			}
 			case 2:{
+				listar_turma();
 				
 				break;
 			}
@@ -397,6 +406,24 @@ void consulta_turma(){
 	fclose(arq);
 	system("pause");
 	
+}
+
+void listar_turma(){
+	
+	struct tCad_turma turma;
+	
+	FILE *arq = fopen("turma.pro","rb");
+	
+	system("cls");
+	printf("===========================================\n");
+	printf("Listar turmas\n\n");
+	
+	while (fread(&turma, sizeof(turma), 1, arq)){
+		printf("Codigo da Turma : %d\nDisciplina : %s \nProfessor: %s \nData de Inicio : %s \nQuantidade de alunos : %d\n\n", 
+		turma.codigo_turma, turma.nome_disciplina, turma.nome_prof, turma.data_inicio, turma.numero_alunos);
+	}
+	fclose(arq);
+	system("pause");
 }
 
 void sair(){ /*Sair da aplicação*/
