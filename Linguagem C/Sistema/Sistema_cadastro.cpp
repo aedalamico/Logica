@@ -2,15 +2,32 @@
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
+#include <time.h>
+
+struct tCad_turma {
+	char nome_disciplina[20],
+	nome_prof[30],
+	data_inicio[10];
+	int numero_alunos, codigo_turma;
+};
+
+struct tCad_aluno{
+	char nome_aluno[30];
+	int idade, codigo_turma;
+	
+};
+
+int qtd_alunos, cd_turma;
 
 int menu_principal(); /*MENU PRINCIPAL*/
 void tela_cadastro(); /*MENU TELA DE CADASTRO*/
-void cadastro_aluno(); /*TELA DE CADASTRO DE ALUNO*/
 void cadastro_turma(); /*TELA DE CADASTRO DE TURMA*/
+void cadastro_aluno(); /*TELA DE CADASTRO DE ALUNO*/
 void tela_editar(); /*TELA DE EDITAR CADASTRO */
-void editar_aluno(); /*TELA EDITAR ALUNO*/
 void editar_turma(); /*TELA EDITAR TURMA*/
+void editar_aluno(); /*TELA EDITAR ALUNO*/
 void tela_consulta(); /*TELA DE CONSULTA*/
+void consulta_turma(); /*TELA DE CONSULTA TURMA*/
 
 void sair(); /*TELA SAIR*/
 
@@ -132,26 +149,99 @@ void tela_cadastro(){ /*FUNÇÃO  TELA DE CADASTRO DE TURMA E ALUNO*/
 	system("pause");
 }
 
-void cadastro_aluno(){ /*TELA DE CADASTRO DE ALUNO*/
-	char nome[30], 
-	idade[2],
-	codigo_turma[5],
-	confirma;
+void cadastro_turma(){ /*TELA DE CADASTRO DE TURMA*/
+	
+	struct tCad_turma turma;
+	
+	char confirma,confirma_aluno;
+	
+	//FILE *arq = fopen("turma.pro", "ab");
+	
 	do{
+		FILE *arq = fopen("turma.pro", "ab");
+		confirma='y';
 		fflush(stdin);
+		qtd_alunos = 0 ;
+		cd_turma = 0;
+		
+		system("cls");
+		printf("===========================================\n");
+		printf("Cadastro de turmas\n");
+		
+		printf("Informe o codigo da turma:\n");
+		fflush(stdin);
+		scanf("%d", cd_turma);
+		turma.codigo_turma = cd_turma;
+		
+		printf("Informe a disciplina:\n");
+		fflush(stdin);
+		scanf("%s", &turma.nome_disciplina);
+
+		
+		printf("Informe o numero de alunos:\n");
+		fflush(stdin);
+		scanf("%d",&turma.numero_alunos);
+		
+		printf("Informe o nome do professo:\n");
+		fflush(stdin);
+		scanf("%s",&turma.nome_prof);
+
+		printf("Informe a data de inicio: (DD/MM/AAAA):\n");
+		fflush(stdin);
+		scanf("%s",&turma.data_inicio);
+		
+		printf("Deseja cadastrar alunos para esta turma? ('Y' - SIM / 'N' - NAO)\n ");
+		scanf("%c", &confirma_aluno);
+		fflush(stdin);
+		if (confirma_aluno == 'Y'or confirma_aluno == 'y'){
+			cadastro_aluno();
+			printf("Cadastro de alunos realizado com sucesso!!!");
+			system("cls");
+			printf("Deseja cadastrar outra turma? ('Y' - SIM / 'N' - NAO)\n");
+			scanf("%c", &confirma);
+		}else{
+			printf("Deseja cadastrar outra turma? ('Y' - SIM / 'N' - NAO)\n");
+			scanf("%c", &confirma);
+			printf("Cadastro de turma realizado com sucesso!!!");
+		}
+		
+		fwrite (&turma, sizeof(turma), 1, arq);
+		
+	}while (confirma == 'y' or confirma == 'Y');
+	system("cls");
+	printf("Saindo do cadastro de Turma\n");
+	system("pause");
+	
+	
+}
+
+void cadastro_aluno(){ /*TELA DE CADASTRO DE ALUNO*/
+
+	struct tCad_aluno aluno;
+	
+	//FILE *arq = fopen("aluno.pro","ab");
+	
+	char confirma;
+	
+	do{
+		FILE *arq = fopen("aluno.pro","ab");
 		system("cls");
 		printf("===========================================\n");
 		printf("Cadastro de alunos\n\n");
+		aluno.codigo_turma = cd_turma;
+		
 		printf("Nome do Aluno :\n");
-		gets(nome);
 		fflush(stdin);
+		scanf("%s",&aluno.nome_aluno);
+
+		
 		printf("Idade :\n");
-		scanf("%s", &idade);
 		fflush(stdin);
-		printf("Informe o código da turma:\n");
-		scanf("%s",&codigo_turma);
-		fflush(stdin);
-		system("pause")	;
+		scanf("%s", &aluno.idade);
+		
+		fwrite (&aluno, sizeof(aluno), 1, arq);
+		
+		fclose(arq);
 		printf("Cadastro realizado com sucesso\n");
 		system("pause");
 		system("cls");
@@ -169,56 +259,7 @@ void cadastro_aluno(){ /*TELA DE CADASTRO DE ALUNO*/
 	
 }
 
-void cadastro_turma(){ /*TELA DE CADASTRO DE TURMA*/
-	char nome_disciplina[20],
-	codigo_turma[5],
-	nome_prof[30],
-	data_inicio[10],
-	confirma,confirma_aluno;
-	int numero_alunos;
-	do{
-		confirma='y';
-		fflush(stdin);
-		system("cls");
-		printf("===========================================\n");
-		printf("Cadastro de turmas\n");
-		printf("Informe a disciplina:\n");
-		gets(nome_disciplina);
-		fflush(stdin);
-		printf("Informe o codigo da turma:\n");
-		scanf("%s",&codigo_turma);
-		fflush(stdin);
-		printf("Informe o numero de alunos:\n");
-		scanf("%d",&numero_alunos);
-		fflush(stdin);
-		printf("Informe o nome do professo:\n");
-		gets(nome_prof);
-		fflush(stdin);
-		printf("Informe a data de inicio: (DD/MM/AAAA):\n");
-		gets(data_inicio);
-		fflush(stdin);
-		printf("Deseja cadastrar alunos para esta turma? ('Y' - SIM / 'N' - NAO)\n ");
-		scanf("%c", &confirma_aluno);
-		fflush(stdin);
-		if (confirma_aluno == 'Y'or confirma_aluno == 'y'){
-			cadastro_aluno();
-			printf("Cadastro de alunos realizado com sucesso!!!");
-			system("cls");
-			printf("Deseja cadastrar outra turma? ('Y' - SIM / 'N' - NAO)\n");
-			scanf("%c", &confirma);
-		}else{
-			printf("Deseja cadastrar outra turma? ('Y' - SIM / 'N' - NAO)\n");
-			scanf("%c", &confirma);
-			printf("Cadastro de turma realizado com sucesso!!!");
-		}
-		
-	}while (confirma == 'y' or confirma == 'Y');
-	system("cls");
-	printf("Saindo do cadastro de Turma\n");
-	system("pause");
-	
-	
-}
+
 void tela_editar(){ /*TELA EDITAR*/
 	int opcao;
 	char confirma;
@@ -264,12 +305,15 @@ void tela_editar(){ /*TELA EDITAR*/
 	system("pause");
 	
 }
-void editar_aluno(){ /*TELA EDITAR ALUNO*/
-	
-}
+
 void editar_turma(){ /*TELA EDITAR TURMA*/
 	
 }
+
+void editar_aluno(){ /*TELA EDITAR ALUNO*/
+	
+}
+
 
 void tela_consulta(){
 	int opcao;
@@ -314,6 +358,35 @@ void tela_consulta(){
 	system("cls");
 	printf("Saindo da Consulta\n\n");
 	system("pause");
+}
+
+void consulta_turma(){
+	
+	struct tCad_turma turma;
+	struct tCad_aluno aluno;
+	
+	printf("Informe o código da turma que deseja consultar:\n");
+	scanf("%d",cd_turma);
+	
+	FILE *arq = fopen("turma.pro","rb");
+
+	
+	while (fread(&turma, sizeof(turma), 1, arq)){
+		if (cd_turma = turma.codigo_turma){
+		
+			printf("Codigo da Turma : %d\n Disciplina : %s \n Professor: %s \n Data de Inicio : %s \n Quantidade de alunos : %d \n ", 
+			turma.codigo_turma, turma.nome_disciplina, turma.nome_prof, turma.data_inicio, turma.numero_alunos);
+			FILE *arq = fopen("aluno.pro","rb");
+			while (fread(&aluno, sizeof(aluno), 1, arq)){
+				if (cd_turma = aluno.codigo_turma){
+					printf("Aluno : %s , Idade : %d anos", aluno.nome_aluno, aluno.idade);
+				}
+			}
+			fclose(arq);
+		}
+	}
+	fclose(arq);
+	
 }
 
 void sair(){ /*Sair da aplicação*/
