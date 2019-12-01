@@ -509,6 +509,38 @@ void visualisar_turma(){
 void tela_excluir(){
 	struct tCad_turma turma;
 	struct tCad_aluno aluno;
+	char confirma_ex;
+	
+/*	do{
+		FILE *arq = fopen("turma.pro","r+b");
+		system("cls");
+		printf("===========================================\n");
+		printf("Consulta turmas\n");
+		printf("Informe o código da turma que deseja consultar:\n");
+		fflush(stdin);
+		scanf("%d",&cd_turma);
+		if (cd_turma == turma.codigo_turma){
+			printf("Codigo da Turma : %d\nDisciplina : %s \nProfessor: %s \nData de Inicio : %s \nQuantidade de alunos : %d\n", 
+			turma.codigo_turma, turma.nome_disciplina, turma.nome_prof, turma.data_inicio, turma.numero_alunos);
+			if  (turma.status_turma == 0){
+				printf("Status : Ativo\n\n");
+			}else{
+				printf("Status : Inativo\n\n");
+			}
+			FILE *arq = fopen("aluno.pro","r+b");
+			printf("Realmente deseja exlcuir? ('Y' - SIM / 'N' - NAO) ");
+			fflush(stdin);
+			scanf("%c",&confirma_ex);)
+			if (confirma_ex == 'y' or confirma_ex == 'Y'){
+				turma.status_turma = 1;
+				aluno.status_aluno = 1;
+				fseek(arq,sizeof(struct t_Cad_turma))
+			}
+		}
+		FALATA EXDLUIR A TURMA E O ALUNO, ME PERDI E QUERO DESISTIR AGORA. */
+		
+//	}while
+	
 	
 	
 	
