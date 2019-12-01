@@ -31,6 +31,8 @@ void tela_consulta(); /*TELA DE CONSULTA*/
 void consulta_turma(); /*TELA DE CONSULTA TURMA*/
 void visualisar_turma(); /*VIZUALIZAR TURMAS*/
 void tela_excluir();
+void excluir_turma();
+void excluir_aluno();
 void sair(); /*TELA SAIR*/
 
 int main(){ /* Função Principal*/
@@ -60,6 +62,7 @@ int main(){ /* Função Principal*/
 				break;
 			}
 			case 4:{
+				excluir_turma();
 				
 				break;
 			}
@@ -286,8 +289,7 @@ void tela_editar(){ /*TELA EDITAR*/
 		printf("Edição de aluno ou turma\n");
 		printf("Escolha o que deseja editar\n");
 		printf("1 - Editar turma\n");
-		printf("2 - Alterar alunos\n");
-		printf("3 - Retornar ao meu principal\n");
+		printf("2 - Retornar ao meu principal\n");
 		scanf("%d",&opcao);
 		fflush(stdin);
 		switch(opcao){
@@ -295,11 +297,7 @@ void tela_editar(){ /*TELA EDITAR*/
 				editar_turma();
 				break;
 			}
-			case 2:{
-				editar_aluno();
-				break;
-			}
-			case 3:{
+			case 2222222:{
 				system("cls");
 				printf("Realmente deseja sair? ('Y' - SIM / 'N' - NAO) ");
 				fflush(stdin);
@@ -397,7 +395,7 @@ void editar_aluno(){ /*TELA EDITAR ALUNO*/
 }
 
 
-void tela_consulta(){
+void tela_consulta(){ /*TELA DE CONSULTA*/
 	int opcao;
 	char confirma;
 	do{
@@ -444,7 +442,7 @@ void tela_consulta(){
 	system("pause");
 }
 
-void consulta_turma(){
+void consulta_turma(){ /*CONSLUTAR TURMARS*/
 	
 	struct tCad_turma turma;
 	struct tCad_aluno aluno;
@@ -483,7 +481,7 @@ void consulta_turma(){
 	
 }
 
-void visualisar_turma(){
+void visualisar_turma(){ /*VISUALIZAR TURMAS*/
 	
 	struct tCad_turma turma;
 	
@@ -506,45 +504,79 @@ void visualisar_turma(){
 	system("pause");
 }
 
-void tela_excluir(){
-	struct tCad_turma turma;
-	struct tCad_aluno aluno;
-	char confirma_ex;
+void tela_excluir(){ /*TELA EXCLUIR*/
+
 	
-/*	do{
+	
+}
+
+void excluir_turma(){ /*EXCLUSÃO DE TURMAS */
+	struct tCad_turma turma;
+	char confirma_ex, confirma;
+	
+	do{
+		cd_turma = 0;
 		FILE *arq = fopen("turma.pro","r+b");
 		system("cls");
 		printf("===========================================\n");
 		printf("Consulta turmas\n");
-		printf("Informe o código da turma que deseja consultar:\n");
+		printf("Informe o código da turma que deseja excluir:\n");
 		fflush(stdin);
 		scanf("%d",&cd_turma);
-		if (cd_turma == turma.codigo_turma){
-			printf("Codigo da Turma : %d\nDisciplina : %s \nProfessor: %s \nData de Inicio : %s \nQuantidade de alunos : %d\n", 
-			turma.codigo_turma, turma.nome_disciplina, turma.nome_prof, turma.data_inicio, turma.numero_alunos);
-			if  (turma.status_turma == 0){
-				printf("Status : Ativo\n\n");
-			}else{
-				printf("Status : Inativo\n\n");
+		while (fread(&turma, sizeof(turma), 1, arq)){
+			
+			if (cd_turma == turma.codigo_turma){
+				printf("Codigo da Turma : %d\nDisciplina : %s \nProfessor: %s \nData de Inicio : %s \nQuantidade de alunos : %d\n", 
+				turma.codigo_turma, turma.nome_disciplina, turma.nome_prof, turma.data_inicio, turma.numero_alunos);
+				if  (turma.status_turma == 0){
+					printf("Status : Ativo\n\n");
+				}else{
+					printf("Status : Inativo\n\n");
+				}
+				printf("Realmente deseja exlcuir? ('Y' - SIM / 'N' - NAO) \n");
+				fflush(stdin);
+				scanf("%c",&confirma_ex);
+				if (confirma_ex == 'y' or confirma_ex == 'Y'){
+					turma.status_turma = 1;
+					fseek(arq,sizeof(struct tCad_turma)*-1, SEEK_CUR);
+					fwrite(&turma,sizeof(turma), 1, arq);
+					fseek(arq,sizeof(turma)*0,SEEK_END);
+					excluir_aluno();
+					system("cls");
+					printf("Dados alterados com sucesso !\n");
+					system("pause");
+					
+				}else{
+					system("cls");
+					printf("Voce optou por nao alterar os dados !\n");
+					system("pause");
+				}
 			}
-			FILE *arq = fopen("aluno.pro","r+b");
-			printf("Realmente deseja exlcuir? ('Y' - SIM / 'N' - NAO) ");
-			fflush(stdin);
-			scanf("%c",&confirma_ex);)
-			if (confirma_ex == 'y' or confirma_ex == 'Y'){
-				turma.status_turma = 1;
-				aluno.status_aluno = 1;
-				fseek(arq,sizeof(struct t_Cad_turma))
-			}
+	
 		}
-		FALATA EXDLUIR A TURMA E O ALUNO, ME PERDI E QUERO DESISTIR AGORA. */
-		
-//	}while
-	
-	
-	
-	
+		fclose(arq);
+		printf("Deseja realizar outra exclusao? ('Y' - SIM / 'N' - NAO) ");
+		fflush(stdin);
+		scanf("%c",&confirma);
+	}while (confirma == 'y' or confirma == 'Y');
 }
+
+void excluir_aluno(){ /*EXCLUIR ALUNOS*/
+	struct tCad_aluno aluno;
+	
+	
+	FILE *arq = fopen("turma.pro", "r+b");
+	while (fread (&aluno, sizeof(aluno), 1, arq)){
+		if (cd_turma == aluno.codigo_turma ){
+				fseek(arq,sizeof(struct tCad_aluno)*-1,SEEK_CUR);
+				fwrite(&aluno,sizeof(aluno), 1, arq);
+				fseek(arq,sizeof(aluno)*0,SEEK_END);
+		}
+	}
+	fclose(arq);
+
+}
+
 void sair(){ /*Sair da aplicação*/
 	system("cls");
 	printf("===========================================\n");
