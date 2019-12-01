@@ -30,9 +30,9 @@ void editar_aluno(); /*TELA EDITAR ALUNO*/
 void tela_consulta(); /*TELA DE CONSULTA*/
 void consulta_turma(); /*TELA DE CONSULTA TURMA*/
 void visualisar_turma(); /*VIZUALIZAR TURMAS*/
-void tela_excluir();
-void excluir_turma();
-void excluir_aluno();
+void tela_excluir(); /*TELA EXCLUIR*/
+void excluir_turma();/*EXCLUIR TURMA*/
+void excluir_aluno();/*EXCLUIR ALUNO*/
 void sair(); /*TELA SAIR*/
 
 int main(){ /* Função Principal*/
@@ -59,6 +59,8 @@ int main(){ /* Função Principal*/
 			}
 			case 3:{
 				tela_consulta();
+				fflush(stdin);
+				confirma='y';
 				break;
 			}
 			case 4:{
@@ -67,10 +69,6 @@ int main(){ /* Função Principal*/
 				break;
 			}
 			case 5:{
-				consulta_turma();
-				break;
-			}
-			case 6:{
 				fflush(stdin);
 				confirma='n';
 				break;
@@ -105,8 +103,7 @@ int menu_principal(){ /*FUNÇÃO MENU PRINCIPAL*/
 	printf("2 - Editar\n");
 	printf("3 - Consultar\n");
 	printf("4 - Excluir\n");
-	printf("5 - Pesquisar\n");
-	printf("6 - Sair\n");
+	printf("5 - Sair\n");
 	scanf("%d", &opcao);
 	return(opcao);
 }
@@ -136,16 +133,14 @@ void tela_cadastro(){ /*FUNÇÃO  TELA DE CADASTRO DE TURMA E ALUNO*/
 				fflush(stdin);
 				scanf("%c", &confirma);
 				if ( confirma == 'Y'or confirma == 'y'){
-					confirma == 'N';
-				}else {
-					confirma == 'Y';
+					return;
 				}
 				system("pause");
 				break;
 			}
 			default:{
 				system("cls");
-				printf("Opçao ivalida\n\n");
+				printf("Opcao ivalida\n\n");
 				confirma='n';
 				break;
 			}
@@ -297,11 +292,14 @@ void tela_editar(){ /*TELA EDITAR*/
 				editar_turma();
 				break;
 			}
-			case 2222222:{
+			case 2:{
 				system("cls");
 				printf("Realmente deseja sair? ('Y' - SIM / 'N' - NAO) ");
 				fflush(stdin);
 				scanf("%c", &confirma);
+				if ( confirma == 'Y'or confirma == 'y'){
+					return;
+				}
 				system("pause");
 				break;
 			}
@@ -425,6 +423,9 @@ void tela_consulta(){ /*TELA DE CONSULTA*/
 				printf("Realmente deseja sair? ('Y' - SIM / 'N' - NAO) ");
 				fflush(stdin);
 				scanf("%c", &confirma);
+				if ( confirma == 'Y'or confirma == 'y'){
+					return;
+				}
 				system("pause");
 				break;
 			}
@@ -436,7 +437,7 @@ void tela_consulta(){ /*TELA DE CONSULTA*/
 				break;
 			}
 		}
-	}while (confirma == 'n' or confirma == 'N');
+	}while (confirma == 'Y' or confirma == 'y');
 	system("cls");
 	printf("Saindo da Consulta\n\n");
 	system("pause");
@@ -505,7 +506,49 @@ void visualisar_turma(){ /*VISUALIZAR TURMAS*/
 }
 
 void tela_excluir(){ /*TELA EXCLUIR*/
-
+	int opcao;
+	char confirma;
+	do{
+		fflush(stdin);
+		system("cls");
+		printf("===========================================\n");
+		printf("Exclusao de turmas\n");
+		printf("Escolha o que deseja excluir\n");
+		printf("1 - Excluir turma\n");
+		printf("2 - Retornar ao meu principal\n");
+		fflush(stdin);
+		scanf("%d",&opcao);
+		switch(opcao){
+			case 1:{
+				excluir_turma();
+				break;
+			}
+			case 2:{
+				system("cls");
+				printf("Realmente deseja sair? ('Y' - SIM / 'N' - NAO) ");
+				fflush(stdin);
+				scanf("%c", &confirma);
+				if ( confirma == 'Y'or confirma == 'y'){
+					return;
+				}
+				system("pause");
+				break;
+			}
+			default:{
+				system("cls");
+				printf("Opçao ivalida\n\n");
+				confirma='n';
+				system("pause");
+				break;
+			}
+		}
+		printf("Deseja realizar outro cadastro? ('Y' - SIM / 'N' - NAO) ");
+		fflush(stdin);
+		scanf("%c",&confirma);
+	}while(confirma == 'n' or confirma == 'N');
+	system("cls");
+	printf("Saindo da Exclusao\n\n");
+	system("pause");
 	
 	
 }
