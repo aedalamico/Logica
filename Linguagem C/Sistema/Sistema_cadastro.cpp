@@ -30,7 +30,7 @@ void editar_aluno(); /*TELA EDITAR ALUNO*/
 void tela_consulta(); /*TELA DE CONSULTA*/
 void consulta_turma(); /*TELA DE CONSULTA TURMA*/
 void visualisar_turma(); /*VIZUALIZAR TURMAS*/
-
+void tela_excluir();
 void sair(); /*TELA SAIR*/
 
 int main(){ /* Função Principal*/
@@ -465,6 +465,11 @@ void consulta_turma(){
 			printf("Codigo da Turma : %d\nDisciplina : %s \nProfessor: %s \nData de Inicio : %s \nQuantidade de alunos : %d\n", 
 			turma.codigo_turma, turma.nome_disciplina, turma.nome_prof, turma.data_inicio, turma.numero_alunos);
 			FILE *arq = fopen("aluno.pro","rb");
+			if  (turma.status_turma == 0){
+				printf("Status : Ativo\n\n");
+			}else{
+				printf("Status : Inativo\n\n");
+			}
 			while (fread(&aluno, sizeof(aluno), 1, arq)){
 				if (cd_turma == aluno.codigo_turma){
 					printf("Aluno : %s | Idade : %d  anos | Telefone : %s \n", aluno.nome_aluno, aluno.idade, aluno.telefone_aluno);
@@ -501,7 +506,13 @@ void visualisar_turma(){
 	system("pause");
 }
 
-
+void tela_excluir(){
+	struct tCad_turma turma;
+	struct tCad_aluno aluno;
+	
+	
+	
+}
 void sair(){ /*Sair da aplicação*/
 	system("cls");
 	printf("===========================================\n");
