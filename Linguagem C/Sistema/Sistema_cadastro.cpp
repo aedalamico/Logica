@@ -3,6 +3,7 @@
 #include <string.h>
 #include <locale.h>
 #include <time.h>
+#include <windows.h>
 
 struct tCad_turma {
 	char nome_disciplina[20],
@@ -74,7 +75,7 @@ int main(){ /* Função Principal*/
 			}
 			case 5:{
 				fflush(stdin);
-				confirma='n';
+				sair();
 				break;
 			}
 			default:{
@@ -96,7 +97,7 @@ int main(){ /* Função Principal*/
 int menu_principal(){ /*FUNÇÃO MENU PRINCIPAL*/
 	int opcao;
 	fflush(stdin);
-	printf("===========================================  :)\n");
+	printf("===========================================\n");
 	printf("Sistema de cadastro de turmas e alunos\n\n");
 	printf("Escolha uma opcao\n");
 	printf("1 - Cadastro\n");
@@ -151,6 +152,7 @@ void tela_cadastro(){ /*FUNÇÃO  TELA DE CADASTRO DE TURMA E ALUNO*/
 		
 	}while (confirma == 'y' or confirma == 'Y');
 	system("cls");
+	printf("===========================================\n");
 	printf("Saindo do cadastro\n\n");
 	system("pause");
 }
@@ -214,6 +216,7 @@ void cadastro_turma(){ /*TELA DE CADASTRO DE TURMA*/
 		
 	}while (confirma == 'y' or confirma == 'Y');
 	system("cls");
+	printf("===========================================\n");
 	printf("Saindo do cadastro de Turma\n");
 	system("pause");
 	
@@ -267,6 +270,7 @@ void cadastro_aluno(){ /*TELA DE CADASTRO DE ALUNO*/
 		
 	}while (confirma == 'y' or confirma == 'Y');
 	system("cls");
+	printf("===========================================\n");
 	printf("Saindo do cadastro de alunos\n");
 	system("pause");
 	
@@ -368,6 +372,7 @@ void tela_editar(){ /*TELA EDITAR*/
 		}
 	}while (confirma == 'y' or confirma == 'N');
 	system("cls");
+	printf("===========================================\n");
 	printf("Saindo da edição\n\n");
 	system("pause");
 	
@@ -445,6 +450,7 @@ void editar_turma(){ /*TELA EDITAR TURMA*/
 	}while (confirma == 'y' or confirma == 'Y');
 
 	system("cls");
+	printf("===========================================\n");
 	printf("Saindo da edicão de turmas\n");
 	system("pause");
 	
@@ -504,6 +510,7 @@ void tela_consulta(){ /*TELA DE CONSULTA*/
 		}
 	}while (confirma == 'Y' or confirma == 'y');
 	system("cls");
+	printf("===========================================\n");
 	printf("Saindo da Consulta\n\n");
 	system("pause");
 }
@@ -540,6 +547,9 @@ void consulta_turma(){ /*CONSLUTAR TURMARS*/
 				}
 			}
 			fclose(arq);
+		}else{
+			system("cls");
+			printf("Turma informada nao encontrada ou deletada\n");
 		}
 	}
 	fclose(arq);
@@ -618,6 +628,7 @@ void tela_excluir(){ /*TELA EXCLUIR*/
 		scanf("%c",&confirma);
 	}while(confirma == 'Y' or confirma == 'y');
 	system("cls");
+	printf("===========================================\n");
 	printf("Saindo da Exclusao\n\n");
 	system("pause");
 	
@@ -677,6 +688,7 @@ void excluir_turma(){ /*EXCLUSÃO DE TURMAS */
 		fflush(stdin);
 		scanf("%c",&confirma);
 	}while (confirma == 'y' or confirma == 'Y');
+
 }
 
 void excluir_aluno(){ /*EXCLUIR ALUNOS*/
@@ -773,8 +785,6 @@ void sair(){ /*Sair da aplicação*/
 	system("cls");
 	printf("===========================================\n");
 	printf("Voce escolheu sair do sistema");
-	system("pause");
-	system("exit");
-	
+	exit(1);
 }
 
