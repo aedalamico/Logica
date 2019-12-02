@@ -96,7 +96,7 @@ int main(){ /* Função Principal*/
 int menu_principal(){ /*FUNÇÃO MENU PRINCIPAL*/
 	int opcao;
 	fflush(stdin);
-	printf("===========================================\n");
+	printf("===========================================  :)\n");
 	printf("Sistema de cadastro de turmas e alunos\n\n");
 	printf("Escolha uma opcao\n");
 	printf("1 - Cadastro\n");
@@ -104,7 +104,7 @@ int menu_principal(){ /*FUNÇÃO MENU PRINCIPAL*/
 	printf("3 - Consultar\n");
 	printf("4 - Excluir\n");
 	printf("5 - Sair\n");
-	scanf("%d ", &opcao);
+	scanf("%d", &opcao);
 	return(opcao);
 }
 
@@ -429,16 +429,23 @@ void editar_turma(){ /*TELA EDITAR TURMA*/
 				
 				fclose(arq);
 				
+			}else{
+				printf("Codigo nao encontrado\n");
+				system("pause");
+				
 			}
 			system("cls");
 			printf("Deseja realizar outro cadastro? ('Y' - SIM / 'N' - NAO) ");
 			fflush(stdin);
 			scanf("%c",&confirma);
+			if (confirma == 'n' or confirma == 'N'){
+				return;
+			}
 		}
 	}while (confirma == 'y' or confirma == 'Y');
 
 	system("cls");
-	printf("Saindo da edição de turmas\n");
+	printf("Saindo da edicão de turmas\n");
 	system("pause");
 	
 	
