@@ -116,7 +116,6 @@ void tela_cadastro(){ /*FUNÇÃO  TELA DE CADASTRO DE TURMA E ALUNO*/
 	int opcao;
 	char confirma;
 	do{
-		fflush(stdin);
 		system("cls");
 		printf("===========================================\n");
 		printf("Cadastro de alunos e turmas\n");
@@ -152,11 +151,6 @@ void tela_cadastro(){ /*FUNÇÃO  TELA DE CADASTRO DE TURMA E ALUNO*/
 				confirma='n';
 				break;
 			}
-		}
-		if (opcao != 3){
-			printf("Deseja realizar outro cadastro? ('Y' - SIM / 'N' - NAO) ");
-			fflush(stdin);
-			scanf("%c", &confirma);
 		}
 		
 	}while (confirma == 'y' or confirma == 'Y');
@@ -199,7 +193,7 @@ void cadastro_turma(){ /*TELA DE CADASTRO DE TURMA*/
 
 		printf("Informe a data de inicio: (DD/MM/AAAA):\n");
 		fflush(stdin);
-		scanf("%s",&turma.data_inicio);
+		gets(turma.data_inicio);
 		
 		turma.status_turma = 0;
 		
@@ -583,7 +577,7 @@ void tela_excluir(){ /*TELA EXCLUIR*/
 		printf("Escolha o que deseja excluir\n");
 		printf("1 - Excluir turma\n");
 		printf("2 - Recuperar turma excluida\n");
-		printf("2 - Retornar ao meu principal\n");
+		printf("3 - Retornar ao meu principal\n");
 		fflush(stdin);
 		scanf("%d",&opcao);
 		switch(opcao){
@@ -615,10 +609,10 @@ void tela_excluir(){ /*TELA EXCLUIR*/
 			}
 		}
 		system("cls");
-		printf("Deseja realizar outro cadastro? ('Y' - SIM / 'N' - NAO) ");
+		printf("Deseja realizar outra exclusao? ('Y' - SIM / 'N' - NAO) ");
 		fflush(stdin);
 		scanf("%c",&confirma);
-	}while(confirma == 'n' or confirma == 'N');
+	}while(confirma == 'Y' or confirma == 'y');
 	system("cls");
 	printf("Saindo da Exclusao\n\n");
 	system("pause");
