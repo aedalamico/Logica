@@ -24,6 +24,7 @@ int menu_principal(); /*MENU PRINCIPAL*/
 void tela_cadastro(); /*MENU TELA DE CADASTRO*/
 void cadastro_turma(); /*TELA DE CADASTRO DE TURMA*/
 void cadastro_aluno(); /*TELA DE CADASTRO DE ALUNO*/
+void cadastro_aluno_cd(); /*FUNÇÃO PARA CADASTRAR ALUNO COM CODIGO DE TURMA */
 void tela_editar(); /*TELA DE EDITAR CADASTRO */
 void editar_turma(); /*TELA EDITAR TURMA*/
 void editar_aluno(); /*TELA EDITAR ALUNO*/
@@ -121,7 +122,8 @@ void tela_cadastro(){ /*FUNÇÃO  TELA DE CADASTRO DE TURMA E ALUNO*/
 		printf("Cadastro de alunos e turmas\n");
 		printf("Escolha o que deseja cadastrar\n");
 		printf("1 - Cadastro de turmas\n");
-		printf("2 - Retornar ao meu principal\n");
+		printf("2 - Cadastro de alunos\n");
+		printf("3 - Retornar ao meu principal\n");
 		fflush(stdin);
 		scanf("%d",&opcao);
 		
@@ -131,6 +133,10 @@ void tela_cadastro(){ /*FUNÇÃO  TELA DE CADASTRO DE TURMA E ALUNO*/
 				break;
 			}
 			case 2:{
+				cadastro_aluno_cd();
+				break;
+			}
+			case 3:{
 				system("cls");
 				printf("Realmente deseja sair do cadastro? ('Y' - SIM / 'N' - NAO) ");
 				fflush(stdin);
@@ -138,7 +144,6 @@ void tela_cadastro(){ /*FUNÇÃO  TELA DE CADASTRO DE TURMA E ALUNO*/
 				if ( confirma == 'Y'or confirma == 'y'){
 					return;
 				}
-				system("pause");
 				break;
 			}
 			default:{
@@ -233,7 +238,7 @@ void cadastro_aluno(){ /*TELA DE CADASTRO DE ALUNO*/
 	char confirma;
 	
 	do{
-		FILE *arq = fopen("aluno.pro","ab");
+		FILE *arq = fopen("aluno.txt","ab");
 		system("cls");
 		printf("===========================================\n");
 		printf("Cadastro de alunos\n\n");
@@ -246,7 +251,7 @@ void cadastro_aluno(){ /*TELA DE CADASTRO DE ALUNO*/
 		
 		printf("Idade :\n");
 		fflush(stdin);
-		scanf("%s", &aluno.idade);
+		scanf("%d", &aluno.idade);
 		
 		printf("Telefone: \n");
 		fflush(stdin);
@@ -276,6 +281,61 @@ void cadastro_aluno(){ /*TELA DE CADASTRO DE ALUNO*/
 	
 }
 
+void cadastro_aluno_cd(){
+	struct tCad_aluno aluno;
+	
+	
+	char confirma;
+	
+	do{
+		FILE *arq = fopen("aluno.txt","ab");
+		system("cls");
+		printf("===========================================\n");
+		printf("Cadastro de alunos\n\n");
+		printf("Informe o codigo da turma que deseja cadastrar aluno:\n");
+		fflush(stdin);
+		scanf("%d", aluno.codigo_turma);
+		
+		
+		printf("Nome do Aluno :\n");
+		fflush(stdin);
+		gets(aluno.nome_aluno);
+
+		
+		printf("Idade :\n");
+		fflush(stdin);
+		scanf("%d", &aluno.idade);
+		
+		printf("Telefone: \n");
+		fflush(stdin);
+		scanf("%s", &aluno.telefone_aluno);
+		
+		aluno.status_aluno = 0;
+		
+		fwrite (&aluno, sizeof(aluno), 1, arq);
+		
+		fclose(arq);
+		qtd_alunos ++;
+		printf("Cadastro realizado com sucesso\n");
+		system("pause");
+		system("cls");
+		printf("Deseja realizar outro cadastro de aluno? \n");
+		fflush(stdin);
+		scanf("%c", &confirma);
+		if (confirma == 'n' or confirma == 'N'){
+			printf("Você optou por sair do cadastro de alunos!\n");
+		}
+		
+		
+	}while (confirma == 'y' or confirma == 'Y');
+	system("cls");
+	printf("Saindo do cadastro de alunos\n");
+	system("pause");
+	
+}
+	
+
+
 
 void tela_editar(){ /*TELA EDITAR*/
 	int opcao;
@@ -303,7 +363,6 @@ void tela_editar(){ /*TELA EDITAR*/
 				if ( confirma == 'Y'or confirma == 'y'){
 					return;
 				}
-				system("pause");
 				break;
 			}
 			default:{
@@ -433,14 +492,12 @@ void tela_consulta(){ /*TELA DE CONSULTA*/
 				if ( confirma == 'Y'or confirma == 'y'){
 					return;
 				}
-				system("pause");
 				break;
 			}
 			default:{
 				system("cls");
 				printf("Opçao ivalida\n\n");
 				confirma='n';
-				system("pause");
 				break;
 			}
 			system("cls");
