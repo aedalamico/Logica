@@ -84,10 +84,6 @@ int main(){ /* Função Principal*/
 				confirma='n';
 			}
 		}
-		system("pause");
-	//	printf("Deseja realizar uma nova acao?\n ('Y' - SIM / 'N' - NAO)");
-		fflush(stdin);
-		//Sscanf("%c",&confirma);
 		
 	}while (confirma == 'y' or confirma == 'Y');
 	system("cls");
@@ -108,7 +104,7 @@ int menu_principal(){ /*FUNÇÃO MENU PRINCIPAL*/
 	printf("3 - Consultar\n");
 	printf("4 - Excluir\n");
 	printf("5 - Sair\n");
-	scanf("%d", &opcao);
+	scanf("%d ", &opcao);
 	return(opcao);
 }
 
@@ -264,6 +260,7 @@ void cadastro_aluno(){ /*TELA DE CADASTRO DE ALUNO*/
 		fflush(stdin);
 		scanf("%c", &confirma);
 		if (confirma == 'n' or confirma == 'N'){
+			system("cls");
 			printf("Você optou por sair do cadastro de alunos!\n");
 		}
 		
@@ -360,7 +357,7 @@ void tela_editar(){ /*TELA EDITAR*/
 			}
 			default:{
 				system("cls");
-				printf("Opçao ivalida\n\n");
+				printf("Opcao ivalida\n\n");
 				system("pause");
 				break;
 			}
