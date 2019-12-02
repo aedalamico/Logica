@@ -122,8 +122,8 @@ void tela_cadastro(){ /*FUNÇÃO  TELA DE CADASTRO DE TURMA E ALUNO*/
 		printf("Cadastro de alunos e turmas\n");
 		printf("Escolha o que deseja cadastrar\n");
 		printf("1 - Cadastro de turmas\n");
-		printf("2 - Cadastro de alunos\n");
-		printf("3 - Retornar ao meu principal\n");
+		/*printf("2 - Cadastro de alunos\n");*/
+		printf("2 - Retornar ao meu principal\n");
 		fflush(stdin);
 		scanf("%d",&opcao);
 		
@@ -132,11 +132,11 @@ void tela_cadastro(){ /*FUNÇÃO  TELA DE CADASTRO DE TURMA E ALUNO*/
 				cadastro_turma();
 				break;
 			}
-			case 2:{
+			/*case 2:{
 				cadastro_aluno_cd();
 				break;
-			}
-			case 3:{
+			}*/
+			case 2:{
 				system("cls");
 				printf("Realmente deseja sair do cadastro? ('Y' - SIM / 'N' - NAO) ");
 				fflush(stdin);
@@ -238,7 +238,7 @@ void cadastro_aluno(){ /*TELA DE CADASTRO DE ALUNO*/
 	char confirma;
 	
 	do{
-		FILE *arq = fopen("aluno.txt","ab");
+		FILE *arq = fopen("aluno.pro","ab");
 		system("cls");
 		printf("===========================================\n");
 		printf("Cadastro de alunos\n\n");
@@ -281,20 +281,20 @@ void cadastro_aluno(){ /*TELA DE CADASTRO DE ALUNO*/
 	
 }
 
-void cadastro_aluno_cd(){
+/*void cadastro_aluno_cd(){
 	struct tCad_aluno aluno;
 	
 	
 	char confirma;
 	
 	do{
-		FILE *arq = fopen("aluno.txt","ab");
+		FILE *arq = fopen("aluno.pro","ab");
 		system("cls");
 		printf("===========================================\n");
 		printf("Cadastro de alunos\n\n");
 		printf("Informe o codigo da turma que deseja cadastrar aluno:\n");
 		fflush(stdin);
-		scanf("%d", aluno.codigo_turma);
+		scanf("%d", &aluno.codigo_turma);
 		
 		
 		printf("Nome do Aluno :\n");
@@ -332,8 +332,7 @@ void cadastro_aluno_cd(){
 	printf("Saindo do cadastro de alunos\n");
 	system("pause");
 	
-}
-	
+}*/	
 
 
 
